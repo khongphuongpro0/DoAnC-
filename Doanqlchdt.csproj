@@ -83,6 +83,7 @@
     <Compile Include="DAO\quyendao.cs" />
     <Compile Include="DAO\sanphamdao.cs" />
     <Compile Include="DAO\taikhoandao.cs" />
+    <Compile Include="DAO\temp.cs" />
     <Compile Include="DTO\chitietdonbandto.cs" />
     <Compile Include="DTO\chitietdonnhapdto.cs" />
     <Compile Include="DTO\donbaohanhdto.cs" />
@@ -101,6 +102,12 @@
     </Compile>
     <Compile Include="GUI\donbaohanhgui.Designer.cs">
       <DependentUpon>donbaohanhgui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Edit\Editkh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Edit\Editkh.Designer.cs">
+      <DependentUpon>Editkh.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
@@ -131,6 +138,12 @@
     </Compile>
     <Compile Include="GUI\loaisanphamgui.Designer.cs">
       <DependentUpon>loaisanphamgui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Manager\Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Manager\Manager.Designer.cs">
+      <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\nhacungcap.cs">
       <SubType>Form</SubType>
@@ -192,16 +205,34 @@
     <Compile Include="GUI\ThongKe.Designer.cs">
       <DependentUpon>ThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Update.Designer.cs">
+      <DependentUpon>Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Edit\Editkh.resx">
+      <DependentUpon>Editkh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\khachhanggui.resx">
+      <DependentUpon>khachhanggui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Manager\Manager.resx">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\nhacungcap.resx">
+      <DependentUpon>nhacungcap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhanVien.resx">
       <DependentUpon>NhanVien.cs</DependentUpon>
@@ -212,6 +243,9 @@
     <EmbeddedResource Include="GUI\register.resx">
       <DependentUpon>register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\sanphamgui.resx">
+      <DependentUpon>sanphamgui.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\SuaNhanVien.resx">
       <DependentUpon>SuaNhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,19 +254,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -243,6 +277,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\icons8-close-24 %281%29.png" />
+    <Content Include="Image\icons8-close-24 %282%29.png" />
+    <Content Include="Image\icons8-close-24.png" />
+    <Content Include="Image\icons8-horizontal-line-24.png" />
+    <Content Include="Image\icons8-horizontal-line-48.png" />
+    <Content Include="Image\icons8-refresh-30 %283%29.png" />
     <None Include="obj\image\menuicon.png" />
     <Content Include="Content\PagedList.css" />
   </ItemGroup>

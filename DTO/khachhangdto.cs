@@ -15,6 +15,8 @@ namespace Doanqlchdt.DTO
         private String email;
         private DateTime ngaysinh;
         private int matk;
+        private int tinhtrang;
+        private Boolean gioitinh;
 
         public string Mkh { get => mkh; set => mkh = value; }
         public string Hoten { get => hoten; set => hoten = value; }
@@ -22,8 +24,10 @@ namespace Doanqlchdt.DTO
         public string Email { get => email; set => email = value; }
         public DateTime Ngaysinh { get => ngaysinh; set => ngaysinh = value; }
         public int Matk { get => matk; set => matk = value; }
+        public int Tinhtrang { get => tinhtrang; set => tinhtrang = value; }
+        public bool Gioitinh { get => gioitinh; set => gioitinh = value; }
 
-        public khachhangdto(string mkh, string hoten, string sdt, string email, DateTime ngaysinh, int matk)
+        public khachhangdto(string mkh, string hoten, string sdt, string email, DateTime ngaysinh, int matk, int tinhtrang, bool gioitinh)
         {
             this.Mkh = mkh;
             this.Hoten = hoten;
@@ -31,7 +35,10 @@ namespace Doanqlchdt.DTO
             this.Email = email;
             this.Ngaysinh = ngaysinh;
             this.Matk = matk;
+            this.Tinhtrang = tinhtrang;
+            this.Gioitinh = gioitinh;
         }
+
 
         public khachhangdto() { }
 

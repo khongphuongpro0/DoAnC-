@@ -10,7 +10,8 @@ namespace Doanqlchdt.connect
 {
     internal class connectToan
     {
-        private string connectionString = "Data Source=ToanLD;Initial Catalog=DoAnC#;User ID=sa;Password=Toan03092003;";
+        //private string connectionString = "Data Source=ToanLD;Initial Catalog=DoAnC#;User ID=sa;Password=Toan03092003;";
+        private string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=QLDACHBDT;Integrated Security=True";
 
         public SqlConnection connection()
         {
