@@ -163,13 +163,10 @@ C:\Users\Admin\source\repos\New folder\DoAnC-\bin\Debug\PagedList.Mvc.dll
 C:\Users\Admin\source\repos\New folder\DoAnC-\bin\Debug\PagedList.xml
 C:\Users\Admin\source\repos\New folder\DoAnC-\bin\Debug\PagedList.Mvc.xml
 C:\Users\Admin\source\repos\New folder\DoAnC-\obj\Debug\Doanqlchdt.csproj.CopyComplete
-
 D:\workspace\DoAnC-\obj\Debug\Doanqlchdt.GUI.ChangePassword.resources
 D:\workspace\DoAnC-\obj\Debug\Doanqlchdt.GUI.ChiTiet.resources
 D:\workspace\DoAnC-\obj\Debug\Doanqlchdt.GUI.TaiKhoanNhanVien.resources
 D:\workspace\DoAnC-\obj\Debug\Doanqlchdt.GUI.XemLichSu.resources
-
 C:\Users\Admin\source\repos\DoAnC-\obj\Debug\Doanqlchdt.GUI.TaiKhoanNhanVien.resources
 C:\Users\Admin\source\repos\DoAnC-\obj\Debug\Doanqlchdt.GUI.XemLichSu.resources
 C:\Users\Admin\source\repos\DoAnC-\obj\Debug\Doanqlchdt.GUI.ChiTiet.resources
->>>>>>> 13f7c86c3a938a7f6b2c78dbdd50d225a61768b7
