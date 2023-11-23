@@ -30,10 +30,10 @@ namespace Doanqlchdt.DTO
                 while(reader.Read())
                 {
                     String mhdb = (String)reader["MaHDB"];
-                    String makh = reader.GetString(3);
-                    String makm = reader.GetString(4);
-                    double tongtien = reader.GetDouble(5);
-                    DateTime ngaytao = reader.GetDateTime(6);
+                    String makh = (string)reader["MaKH"];
+                    String makm = (string)reader["MaKM"];
+                    double tongtien = (double)reader["TongTien"];
+                    DateTime ngaytao = (DateTime)reader["NgayTao"];
                     hoadonbandto hd = new hoadonbandto(mhdb, "", makh, makm, tongtien, ngaytao);
                     list.Add(hd);
                 }
