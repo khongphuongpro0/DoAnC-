@@ -48,12 +48,20 @@ namespace Doanqlchdt.GUI
             ArrayList arrayList = thongKeBUS.GetDSNam();
 
             cbbYear.Items.Clear();
-            cbbYear.Items.AddRange(arrayList.ToArray());
-            cbbYear.SelectedIndex = 0;
 
-            namLoc = cbbYear.SelectedItem.ToString();
-            fillChart(namLoc);
-            loadChartPie(namLoc);
+            if (arrayList != null && arrayList.Count > 0)
+            {
+                cbbYear.Items.AddRange(arrayList.ToArray());
+                cbbYear.SelectedIndex = 0;
+                namLoc = cbbYear.SelectedItem.ToString();
+                fillChart(namLoc);
+                loadChartPie(namLoc);
+            }
+            else
+            {
+                cbbYear.SelectedIndex = -1;
+            }
+            
         }
 
         public void ShowQuantity()
