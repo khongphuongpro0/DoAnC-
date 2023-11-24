@@ -30,11 +30,11 @@ namespace Doanqlchdt.GUI.Edit
             txtEmail.Text = selectedkh.Email.Trim();
             txtSDT.Text = selectedkh.Sdt.Trim();
             dtpNgaySinh.Value = selectedkh.Ngaysinh;
-            if(selectedkh.Gioitinh==true)
+            if(selectedkh.Gioitinh.Trim()=="Nam")
             {
                 radioButtonnam.Checked = true;
             }
-            else if (selectedkh.Gioitinh == false)
+            else if (selectedkh.Gioitinh.Trim()=="Nữ")
             {
                 radioButtonnu.Checked = true;
             }
@@ -107,11 +107,11 @@ namespace Doanqlchdt.GUI.Edit
             khdto.Ngaysinh = dtpNgaySinh.Value;
             if(radioButtonnam.Checked)
             {
-                khdto.Gioitinh = true;
+                khdto.Gioitinh = "Nam";
             }
             else
             {
-                khdto.Gioitinh = false;
+                khdto.Gioitinh = "Nữ";
             }
             khdto.Mkh=txtMaKh.Text.Trim();
             khdto.Matk=int.Parse(txtMaTK.Text.Trim());

@@ -118,14 +118,7 @@ namespace Doanqlchdt.GUI
                 ls.SubItems.Add(khachhangdto.Email);
                 ls.SubItems.Add(khachhangdto.Ngaysinh.ToString("dd/MM/yyyy"));
                 ls.SubItems.Add(khachhangdto.Matk.ToString());
-                if (khachhangdto.Gioitinh == true)
-                {
-                    ls.SubItems.Add("Nam");
-                }
-                else
-                {
-                    ls.SubItems.Add("Nữ");
-                }
+                ls.SubItems.Add(khachhangdto.Gioitinh);
                 listView1.Items.Add(ls);
             }
 
@@ -146,14 +139,7 @@ namespace Doanqlchdt.GUI
                 ls.SubItems.Add(khachhangdto.Email);
                 ls.SubItems.Add(khachhangdto.Ngaysinh.ToString("dd/MM/yyyy"));
                 ls.SubItems.Add(khachhangdto.Matk.ToString());
-                if (khachhangdto.Gioitinh == true)
-                {
-                    ls.SubItems.Add("Nam");
-                }
-                else
-                {
-                    ls.SubItems.Add("Nữ");
-                }
+                ls.SubItems.Add(khachhangdto.Gioitinh);
                 listView1.Items.Add(ls);
             }
 

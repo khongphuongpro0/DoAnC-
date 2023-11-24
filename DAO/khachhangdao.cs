@@ -1,4 +1,5 @@
-﻿using Doanqlchdt.DTO;
+﻿using Doanqlchdt.connect;
+using Doanqlchdt.DTO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,10 +13,11 @@ namespace Doanqlchdt.DAO
     internal class khachhangdao
     {
         public khachhangdao() { }
-        public ArrayList getds()
+        public ArrayList findAll()
         {
             ArrayList ds = new System.Collections.ArrayList();
-            connect.connect cn = new connect.connect();
+            /*connect.connect cn = new connect.connect();*/
+            connectToan cn = new connectToan();
             SqlConnection connect = cn.connection();
             SqlCommand sqlcommand = new SqlCommand();
             sqlcommand.CommandType = System.Data.CommandType.Text;
@@ -24,15 +26,15 @@ namespace Doanqlchdt.DAO
             SqlDataReader reader = sqlcommand.ExecuteReader();
             while (reader.Read())
             {
-                String mkh=reader.GetString(0);
-                String name=reader.GetString(1);
-                String sdt=reader.GetString(2);
-                String email=reader.GetString(3);
-                DateTime ngaysinh= reader.GetDateTime(4);
-                int mtk = reader.GetInt32(5);
-                int tinhtrang=reader.GetInt32(7);
-                Boolean gioitinh= reader.GetBoolean(6);
-                khachhangdto kh=new khachhangdto(mkh,name,sdt,email,ngaysinh,mtk,tinhtrang,gioitinh);
+                String mkh=(string)reader["MaKH"];
+                String name=(string)reader["HoTen"];
+                String sdt=(String)reader["SDT"];
+                String email=(string)reader["Email"];
+                String gioitinh = (string)reader["GioiTinh"];
+                DateTime ngaysinh= (DateTime)reader["Ngaysinh"];
+                int user = (int)reader["MaTk"];
+                int trangthai = (int)reader["TinhTrang"];
+                khachhangdto kh=new khachhangdto(mkh,name,gioitinh,sdt,email,ngaysinh,user,trangthai);
                 ds.Add(kh);
             }
             reader.Close();
@@ -44,33 +46,43 @@ namespace Doanqlchdt.DAO
             connect.connect cn = new connect.connect();
             SqlCommand sqlcommand = new SqlCommand();
             sqlcommand.CommandType = System.Data.CommandType.Text;
-            sqlcommand.CommandText = "insert into KhachHang values(N'" + khdto.Mkh + "',N'" + khdto.Hoten + "',N'" + khdto.Sdt + "',N'" + khdto.Email + "','" + khdto.Ngaysinh + "','"+khdto.Matk+"','"+khdto.Gioitinh+"','"+khdto.Tinhtrang+"')";
+            sqlcommand.CommandText = "insert into KhachHang values(N'" + khdto.Mkh + "',N'" + khdto.Hoten + "',N'" + khdto.Sdt + "',N'" + khdto.Email + "','" + khdto.Ngaysinh + "','"+khdto.Matk+"')";
             SqlConnection connect = cn.connection();
             int kq = sqlcommand.ExecuteNonQuery();
             connect.Close();
             return kq;
         }
-        public int update(khachhangdto khdto)
+        public Boolean update(khachhangdto khdto)
         {
-            connect.connect cn = new connect.connect();
-            SqlCommand sqlcommand = new SqlCommand();
-            sqlcommand.CommandType = System.Data.CommandType.Text;
-            sqlcommand.CommandText = "update KhachHang set HoTen= N'"+khdto.Hoten +"',SDT= N'"+khdto.Sdt+"' ,Email= N'"+khdto.Email+"',Ngaysinh='"+khdto.Ngaysinh+ "' ,MaTK='"+khdto.Matk+"',GioiTinh='" + khdto.Gioitinh+"',TinhTrang='"+khdto.Tinhtrang+"'where MaKH='" + khdto.Mkh+ "' ";
-            SqlConnection connect = cn.connection();
-            sqlcommand.Connection = connect;
-            int kq = sqlcommand.ExecuteNonQuery();
-            connect.Close();
-            return kq;
+            if (khdto.Mkh != null)
+            {
+                using(SqlConnection conn= new connectToan().connection())
+                {
+                    string query = "update KhachHang set HoTen=@ten,SDT=@sdt,Email=@email,NgaySinh=@ngaysinh,GioiTinh=@gioitinh where MaKH=@makh";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ten", khdto.Hoten);
+                    cmd.Parameters.AddWithValue("@sdt", khdto.Sdt);
+                    cmd.Parameters.AddWithValue("@email", khdto.Email);
+                    cmd.Parameters.AddWithValue("@ngaysinh", khdto.Ngaysinh.ToString("MM-dd-yyyy"));
+                    cmd.Parameters.AddWithValue("@makh", khdto.Mkh);
+                    cmd.Parameters.AddWithValue("@gioitinh", khdto.Gioitinh);
+                    cmd.ExecuteNonQuery();
+                }
+                return true;
+            }
+            return false;
         }
         public int selectcount()
         {
             connect.connect cn = new connect.connect();
             SqlCommand sqlcommand = new SqlCommand();
             sqlcommand.CommandType = System.Data.CommandType.Text;
+
             sqlcommand.CommandText = "select count (*) from KhachHang ";
             SqlConnection connect = cn.connection();
             sqlcommand.Connection=connect;
             int kq = (int)sqlcommand.ExecuteScalar();
+
             connect.Close();
             return kq;
         }
@@ -94,8 +106,8 @@ namespace Doanqlchdt.DAO
                 DateTime ngaysinh = reader.GetDateTime(4);
                 int mtk = reader.GetInt32(5);
                 int tinhtrang = reader.GetInt32(7);
-                Boolean gioitinh = reader.GetBoolean(6);
-                khachhangdto kh = new khachhangdto(mkh, name, sdt, email, ngaysinh, mtk, tinhtrang, gioitinh);
+                String gioitinh = reader.GetString(6);
+                khachhangdto kh = new khachhangdto(mkh, name, gioitinh, sdt, email, ngaysinh, mtk, tinhtrang);
                 ds.Add(kh);
             }
             reader.Close();
@@ -103,6 +115,7 @@ namespace Doanqlchdt.DAO
             return ds;
         }
            public int selectcountpagesearch(String ten,String dieukien)
+
         {
             connect.connect cn = new connect.connect();
             SqlCommand sqlcommand = new SqlCommand();
@@ -114,22 +127,15 @@ namespace Doanqlchdt.DAO
             }
             else if(ten=="GioiTinh")
             {
-                if (dieukien == "01")
-                {
-                    sqlcommand.CommandText = string.Format("select count (*) from KhachHang Where GioiTinh In (0,1)");
-                }
-                else if (dieukien == "0")
-                {
-                    sqlcommand.CommandText = string.Format("select count(*) from KhachHang Where GioiTinh = 0");
-                }
-                else if (dieukien == "1")
-                {
-                    sqlcommand.CommandText = string.Format("select count(*) from KhachHang Where GioiTinh = 1");
-                }
+
+                sqlcommand.CommandText = string.Format("select count (*) from KhachHang  Where GioiTinh LIKE N'" + dieukien + "%' ");
+
             }
             else
             {
+
                 sqlcommand.CommandText = string.Format("select count (*) from KhachHang  Where {0} LIKE N'%" + dieukien + "%' ", ten);
+
             }
            
             SqlConnection connect = cn.connection();
@@ -152,18 +158,7 @@ namespace Doanqlchdt.DAO
             }
             else if (ten == "GioiTinh")
             {
-                dieukien=dieukien.Trim();
-                if(dieukien=="01")
-                {
-                    sqlcommand.CommandText = string.Format("select * from KhachHang Where GioiTinh In (0,1) ORDER BY {0} {1} OFFSET {2} ROWS FETCH NEXT {3} ROWS ONLY",dieukiensx, loaisx,ofset, record);
-                }else if(dieukien=="0")
-                {
-                    sqlcommand.CommandText = string.Format("select * from KhachHang Where GioiTinh = 0 ORDER BY {0} {1} OFFSET {2} ROWS FETCH NEXT {3} ROWS ONLY", dieukiensx,loaisx, ofset, record);
-                }
-                else if (dieukien == "1")
-                {
-                    sqlcommand.CommandText = string.Format("select * from KhachHang Where GioiTinh = 1 ORDER BY {0} {1} OFFSET {2} ROWS FETCH NEXT {3} ROWS ONLY", dieukiensx, loaisx, ofset, record);
-                }
+                sqlcommand.CommandText = string.Format("select * from KhachHang Where GioiTinh LIKE N'"+dieukien+"%' ORDER BY {0} {1} OFFSET {2} ROWS FETCH NEXT {3} ROWS ONLY", dieukiensx, loaisx, ofset, record);
 
             }
             else
@@ -181,8 +176,8 @@ namespace Doanqlchdt.DAO
                 DateTime ngaysinh = reader.GetDateTime(4);
                 int mtk = reader.GetInt32(5);
                 int tinhtrang = reader.GetInt32(7);
-                Boolean gioitinh = reader.GetBoolean(6);
-                khachhangdto kh = new khachhangdto(mkh, name, sdt, email, ngaysinh, mtk, tinhtrang, gioitinh);
+                String gioitinh = reader.GetString(6);
+                khachhangdto kh = new khachhangdto(mkh, name, gioitinh, sdt, email, ngaysinh, mtk, tinhtrang);
                 ds.Add(kh);
             }
             reader.Close();
@@ -209,14 +204,40 @@ namespace Doanqlchdt.DAO
                 DateTime ngaysinh = reader.GetDateTime(4);
                 int mtk = reader.GetInt32(5);
                 int tinhtrang = reader.GetInt32(7);
-                Boolean gioitinh = reader.GetBoolean(6);
-                khachhangdto kh = new khachhangdto(mkh, name, sdt, email, ngaysinh, mtk, tinhtrang, gioitinh);
+                String gioitinh = reader.GetString(6);
+                khachhangdto kh = new khachhangdto(mkh, name, gioitinh, sdt, email, ngaysinh, mtk, tinhtrang);
                 ds.Add(kh);
             }
             reader.Close();
             connect.Close();
             return ds;
         }
+
+        public khachhangdto findByID(string id)
+        {
+            khachhangdto kh = new khachhangdto();
+            using(SqlConnection conn=new connectToan().connection())
+            {
+                string query = "select * from KhachHang where MaKH=@id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    String mkh = (string)reader["MaKH"];
+                    String name = (string)reader["HoTen"];
+                    String sdt = (String)reader["SDT"];
+                    String email = (string)reader["Email"];
+                    String gioitinh = (string)reader["GioiTinh"];
+                    DateTime ngaysinh = (DateTime)reader["Ngaysinh"];
+                    int user = (int)reader["MaTK"];
+                    string gioitinh1 = (string)reader["GioiTinh"];
+                    int trangthai = (int)reader["TinhTrang"];
+                    kh = new khachhangdto(mkh, name, gioitinh1, sdt, email, ngaysinh, user,trangthai);
+                }
+            }
+            return kh;
+        } 
 
     }
 }

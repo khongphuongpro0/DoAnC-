@@ -33,6 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.sidebar = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnPhanQuyen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +52,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -78,7 +79,8 @@
             // 
             // sidebar
             // 
-            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.sidebar.Controls.Add(this.button1);
             this.sidebar.Controls.Add(this.btnThongKe);
             this.sidebar.Controls.Add(this.btnPhanQuyen);
             this.sidebar.Controls.Add(this.label1);
@@ -92,6 +94,22 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(283, 774);
             this.sidebar.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(3, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(212, 48);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "              Đăng Xuất";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnThongKe
             // 
@@ -122,7 +140,7 @@
             this.btnPhanQuyen.Name = "btnPhanQuyen";
             this.btnPhanQuyen.Size = new System.Drawing.Size(283, 59);
             this.btnPhanQuyen.TabIndex = 3;
-            this.btnPhanQuyen.Text = "               Phân Quyền";
+            this.btnPhanQuyen.Text = "               Tài Khoản";
             this.btnPhanQuyen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhanQuyen.UseVisualStyleBackColor = true;
             this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
@@ -207,5 +225,6 @@
         private System.Windows.Forms.Panel mainpanel;
         private System.Windows.Forms.Button btnPhanQuyen;
         private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -57,7 +57,7 @@ namespace Doanqlchdt.GUI
         }
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
-            loadform(new PhanQuyen());
+            loadform(new TaiKhoanNhanVien());
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -79,6 +79,11 @@ namespace Doanqlchdt.GUI
             f.Show();
         }
 
-        
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Login loginForm = new Login(); 
+            loginForm.Visible = true;
+        }
     }
 }
