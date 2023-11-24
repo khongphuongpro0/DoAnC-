@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Doanqlchdt.DTO
 {
-    internal class khachhangdto
+    public class khachhangdto
     {
 
         private String mkh;
@@ -26,7 +26,10 @@ namespace Doanqlchdt.DTO
         public int Matk { get => matk; set => matk = value; }
         public int Tinhtrang { get => tinhtrang; set => tinhtrang = value; }
         public bool Gioitinh { get => gioitinh; set => gioitinh = value; }
+        public khachhangdto() 
+        { 
 
+        }
         public khachhangdto(string mkh, string hoten, string sdt, string email, DateTime ngaysinh, int matk, int tinhtrang, bool gioitinh)
         {
             this.Mkh = mkh;
@@ -40,7 +43,7 @@ namespace Doanqlchdt.DTO
         }
 
 
-        public khachhangdto() { }
+       
 
     }
 }

@@ -145,6 +145,18 @@
     <Compile Include="GUI\Manager\Manager.Designer.cs">
       <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Messageboxshow\Comfrimupdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Messageboxshow\Comfrimupdate.Designer.cs">
+      <DependentUpon>Comfrimupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Messageboxshow\YesOrNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Messageboxshow\YesOrNo.Designer.cs">
+      <DependentUpon>YesOrNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\nhacungcap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,12 +217,20 @@
     <Compile Include="GUI\ThongKe.Designer.cs">
       <DependentUpon>ThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Thêm\Themsanpham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Thêm\Themsanpham.Designer.cs">
+      <DependentUpon>Themsanpham.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Update.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Update.Designer.cs">
       <DependentUpon>Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Oder\Colorcustome.cs" />
+    <Compile Include="obj\Oder\Validate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\Edit\Editkh.resx">
@@ -230,6 +250,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Messageboxshow\Comfrimupdate.resx">
+      <DependentUpon>Comfrimupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Messageboxshow\YesOrNo.resx">
+      <DependentUpon>YesOrNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\nhacungcap.resx">
       <DependentUpon>nhacungcap.cs</DependentUpon>
@@ -251,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongKe.resx">
       <DependentUpon>ThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Thêm\Themsanpham.resx">
+      <DependentUpon>Themsanpham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -277,6 +306,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\Filter.png" />
     <Content Include="Image\icons8-close-24 %281%29.png" />
     <Content Include="Image\icons8-close-24 %282%29.png" />
     <Content Include="Image\icons8-close-24.png" />

@@ -313,8 +313,10 @@
             this.ClientSize = new System.Drawing.Size(1142, 1055);
             this.Controls.Add(this.panelmain);
             this.Controls.Add(this.panelside);
+            this.MaximizeBox = false;
             this.Name = "Manager";
             this.Text = "Manager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelside.ResumeLayout(false);
             this.panelsideduoi.ResumeLayout(false);
             this.panelsidehoadon.ResumeLayout(false);

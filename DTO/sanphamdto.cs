@@ -13,14 +13,24 @@ namespace Doanqlchdt.DTO
         private String maloai;
         private int  gianhap;
         private int giaban;
+        private String mota;
+        private byte[] imageData;
+        private int soluong;
 
-        public sanphamdto(string masp, string tensp, string maloai, int gianhap, int giaban)
+        public sanphamdto()
+        {
+        }
+
+        public sanphamdto(string masp, string tensp, string maloai, int gianhap, int giaban, string mota, byte[] imageData, int soluong)
         {
             this.Masp = masp;
             this.Tensp = tensp;
             this.Maloai = maloai;
             this.Gianhap = gianhap;
             this.Giaban = giaban;
+            this.Mota = mota;
+            this.ImageData = imageData;
+            this.Soluong = soluong;
         }
 
         public string Masp { get => masp; set => masp = value; }
@@ -28,5 +38,8 @@ namespace Doanqlchdt.DTO
         public string Maloai { get => maloai; set => maloai = value; }
         public int Gianhap { get => gianhap; set => gianhap = value; }
         public int Giaban { get => giaban; set => giaban = value; }
+        public string Mota { get => mota; set => mota = value; }
+        public byte[] ImageData { get => imageData; set => imageData = value; }
+        public int Soluong { get => soluong; set => soluong = value; }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Doanqlchdt.BUS;
+using Doanqlchdt.DTO;
+using Doanqlchdt.GUI.Messageboxshow;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +16,28 @@ namespace Doanqlchdt.GUI.Edit
 {
     public partial class Editkh : Form
     {
-        
-        public Editkh()
+        static khachhangbus khachhbus = new khachhangbus();
+        private int borderWidth = 5;
+        private khachhangbus khachhangbus=new khachhangbus();
+        private DTO.khachhangdto Selectedkh;
+        public Editkh(khachhangdto selectedkh)
         {
+            Selectedkh=selectedkh;
             InitializeComponent();
+            txtMaKh.Text = selectedkh.Mkh;
+            txtMaTK.Text = selectedkh.Matk.ToString();
+            textBox1.Text = selectedkh.Hoten.Trim();
+            txtEmail.Text = selectedkh.Email.Trim();
+            txtSDT.Text = selectedkh.Sdt.Trim();
+            dtpNgaySinh.Value = selectedkh.Ngaysinh;
+            if(selectedkh.Gioitinh==true)
+            {
+                radioButtonnam.Checked = true;
+            }
+            else if (selectedkh.Gioitinh == false)
+            {
+                radioButtonnu.Checked = true;
+            }
             mousehover();
         }
         public void mousehover()
@@ -65,7 +87,140 @@ namespace Doanqlchdt.GUI.Edit
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            this.Close();
+            YesOrNo yon = new YesOrNo("Bạn có chắc chắn muốn hủy không");
+            yon.ShowDialog();
+            if (yon.Comfirm == true)
+            {
+                Comfrimupdate cfm = new Comfrimupdate("Bạn hủy thành công");
+                cfm.ShowDialog();
+                this.Close();
+            }
+           
+        }
+
+        private void btnthem_Click(object sender, EventArgs e)
+        {
+            khachhangdto khdto= new khachhangdto();
+            khdto.Hoten = textBox1.Text.Trim();
+            khdto.Email= txtEmail.Text.Trim();
+            khdto.Sdt= txtSDT.Text.Trim();
+            khdto.Ngaysinh = dtpNgaySinh.Value;
+            if(radioButtonnam.Checked)
+            {
+                khdto.Gioitinh = true;
+            }
+            else
+            {
+                khdto.Gioitinh = false;
+            }
+            khdto.Mkh=txtMaKh.Text.Trim();
+            khdto.Matk=int.Parse(txtMaTK.Text.Trim());
+            YesOrNo yon = new YesOrNo("Bạn có chắc chắn muốn lưu không");
+            yon.ShowDialog();
+            if(yon.Comfirm==true)
+            {
+                khachhbus.upadte(khdto);
+                Comfrimupdate cfm = new Comfrimupdate("Bạn đã lưu thông tin thành công");
+                cfm.ShowDialog();
+                this.Close();
+            }
+
+           
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonnu_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonnam_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaTK_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSDT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaKh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
