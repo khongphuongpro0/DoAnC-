@@ -15,7 +15,6 @@ namespace Doanqlchdt.DTO
     internal class sanphamdao
     {
         public sanphamdao() { }
-<<<<<<< HEAD
         public int selectcount()
         {
             connect.connect cn = new connect.connect();
@@ -28,8 +27,7 @@ namespace Doanqlchdt.DTO
             connect.Close();
             return kq;
         }
-        public ArrayList getdsformpage(int ofset, int record)
-=======
+
         public List<sanphamdto> getds()
         {
             List<sanphamdto> ds = new List<sanphamdto>();
@@ -100,7 +98,7 @@ namespace Doanqlchdt.DTO
             return false;
         }
         public ArrayList getdsmasp(String ma)
->>>>>>> 7d37b7b2d53ac482edacc1b20aea44ed80eac356
+
         {
 
             ArrayList ds = new System.Collections.ArrayList();
@@ -108,27 +106,13 @@ namespace Doanqlchdt.DTO
             SqlConnection connect = cn.connection();
             SqlCommand sqlcommand = new SqlCommand();
             sqlcommand.CommandType = System.Data.CommandType.Text;
-<<<<<<< HEAD
-            sqlcommand.CommandText = string.Format("select * from SanPham ORDER BY MaSP ASC OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY", ofset, record);
-=======
+
             sqlcommand.CommandText = "select * from SanPham MaSP LIKE '" + ma + "%'";
->>>>>>> 7d37b7b2d53ac482edacc1b20aea44ed80eac356
             sqlcommand.Connection = connect;
             SqlDataReader reader = sqlcommand.ExecuteReader();
             while (reader.Read())
             {
-<<<<<<< HEAD
-                String mkh = reader.GetString(0);
-                String name = reader.GetString(1);
-                String sdt = reader.GetString(2);
-                String email = reader.GetString(3);
-                DateTime ngaysinh = reader.GetDateTime(4);
-                int mtk = reader.GetInt32(5);
-                int tinhtrang = reader.GetInt32(7);
-                Boolean gioitinh = reader.GetBoolean(6);
-                khachhangdto kh = new khachhangdto(mkh, name, sdt, email, ngaysinh, mtk, tinhtrang, gioitinh);
-                ds.Add(kh);
-=======
+
                 String msp = reader.GetString(0);
                 String tensp = reader.GetString(1);
                 String maloai = reader.GetString(2);
@@ -247,7 +231,6 @@ namespace Doanqlchdt.DTO
                 int soluong = (int)reader["SoLuong"];
                 sanphamdto spdto = new sanphamdto(msp, tensp, maloai, gianhap, giaban, hinhanh, mota, soluong);
                 ds.Add(spdto);
->>>>>>> 7d37b7b2d53ac482edacc1b20aea44ed80eac356
             }
             reader.Close();
             connect.Close();

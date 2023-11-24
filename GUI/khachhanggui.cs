@@ -663,18 +663,6 @@ namespace Doanqlchdt.GUI
                 setvisiblebutonpage(totalpageorder, btnarrayod);
                 ten = "GioiTinh";
                 int ketquacoutoder = 0;
-                if (ketquatim == "N")
-                {
-                    ketquatim = "01";
-                }
-                else if (ketquatim == "Na" || ketquatim == "Nam")
-                {
-                    ketquatim = "1";
-                }
-                else if (ketquatim == "Nữ")
-                {
-                    ketquatim = "0";
-                }
                 ketquacoutoder = khachhbus.selectcountoder(ten, ketquatim);
                 totalpagetempoder = (double)ketquacoutoder / recordorder;
                 totalpageorder = (int)Math.Ceiling(totalpagetempoder);
